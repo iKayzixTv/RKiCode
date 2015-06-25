@@ -1,23 +1,23 @@
 package eu.spvp.enums;
 
+import java.util.HashMap;
+
+import eu.spvp.kits.PvP;
 import eu.spvp.objects.Kit;
 
-public enum Kits {
+public class Kits {
 
-	PVP("PvP");
-	
-	//private Kit class_reference;
-	private String name;
-	
-	Kits(String name) {
-		this.name = name;
+	protected static HashMap<String, Kit> kits = new HashMap<String, Kit>();
+
+	public static Kit getKit(String name) {
+		return kits.get(name);
 	}
 	
-	public Kit getKit() {
-		return null;
+	public static void setKit(String name, Kit kit) {
+		kits.put(name, kit);
 	}
 	
-	public String getName() {
-		return name;
+	public static void invokeRegister() {
+		setKit("PvP", new PvP());
 	}
 }
